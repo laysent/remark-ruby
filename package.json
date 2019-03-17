@@ -1,0 +1,44 @@
+{
+  "name": "remark-ruby",
+  "version": "0.1.0",
+  "description": "Custom syntax for remarkjs, adding ruby (furigana) to markdown.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laysent/remark-ruby.git"
+  },
+  "keywords": [
+    "markdown",
+    "remark",
+    "ruby",
+    "furigana"
+  ],
+  "author": "LaySent <laysent@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/laysent/remark-ruby/issues"
+  },
+  "homepage": "https://github.com/laysent/remark-ruby#readme",
+  "peerDependencies": {
+    "remark-parse": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "devDependencies": {
+    "eslint": "5.3.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^24.5.0",
+    "rehype-stringify": "^5.0.0",
+    "remark-parse": "^6.0.3",
+    "remark-rehype": "^4.0.0",
+    "remark-stringify": "^6.0.4",
+    "unified": "^7.1.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint index.js index.test.js",
+    "prepublish": "npm run lint && npm run test"
+  }
+}

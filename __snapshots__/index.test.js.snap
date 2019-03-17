@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ruby tag (customParenthesis) 1`] = `"<p>According to <a href=\\"https://en.wikipedia.org/wiki/Furigana\\">Wiki</a>, <ruby>Furigana<rp>{</rp><rt>振り仮名</rt><rp>}</rp></ruby> is a Japanese reading aid.</p>"`;
+
+exports[`should render ruby tag (empty object) 1`] = `"<p>According to <a href=\\"https://en.wikipedia.org/wiki/Furigana\\">Wiki</a>, <ruby>Furigana<rp>(</rp><rt>振り仮名</rt><rp>)</rp></ruby> is a Japanese reading aid.</p>"`;
+
+exports[`should render ruby tag (no-config) 1`] = `"<p>According to <a href=\\"https://en.wikipedia.org/wiki/Furigana\\">Wiki</a>, <ruby>Furigana<rp>(</rp><rt>振り仮名</rt><rp>)</rp></ruby> is a Japanese reading aid.</p>"`;
+
+exports[`should render ruby tag (singleParenthesis) 1`] = `"<p>According to <a href=\\"https://en.wikipedia.org/wiki/Furigana\\">Wiki</a>, <ruby>Furigana<rp>:</rp><rt>振り仮名</rt><rp>:</rp></ruby> is a Japanese reading aid.</p>"`;
