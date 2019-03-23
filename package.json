@@ -1,6 +1,6 @@
 {
   "name": "remark-ruby",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Custom syntax for remarkjs, adding ruby (furigana) to markdown.",
   "main": "index.js",
   "repository": {

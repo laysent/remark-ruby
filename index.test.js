@@ -44,4 +44,18 @@ for (const [configName, config] of Object.entries(configToTest)) { // eslint-dis
 
     expect(contents.indexOf('<ruby>') < 0).toBe(true);
   });
+  it(`should handle delimitation in ruby (${configName})`, () => {
+    const nested = '{first, [second part] and [third]}^(eins, [zwei] und [drei])';
+    const { contents } = render(nested, config);
+
+    expect(contents).toMatchSnapshot();
+  });
+  it(`should compile delimitation text to markdown (${configName})`, () => {
+    const nested = '{[first][second part][third]}^([eins][zwei][drei])\n';
+    const { contents: contentsA } = renderToMarkdown(nested, config);
+    const { contents: contentsB } = renderToMarkdown(contentsA, config);
+
+    expect(nested).toBe(contentsA);
+    expect(contentsA).toBe(contentsB);
+  });
 }

@@ -3,6 +3,29 @@ function locator(value, fromIndex) {
 }
 
 const SYNTAX_PATTERN = /^{([^}]+)}\^\(([^)]+)\)/;
+const GROUP_PATTERN = /\[[^\]]+\]/;
+
+function delimitText(input) {
+  let text = input;
+  const ret = [];
+  let match = GROUP_PATTERN.exec(text);
+  if (!match) return text;
+  while (match) {
+    if (match.index !== 0) {
+      ret.push(text.substr(0, match.index));
+    }
+    ret.push(match[0].substr(1, match[0].length - 2));
+    text = text.substr(match[0].length + match.index);
+    match = GROUP_PATTERN.exec(text);
+  }
+  if (ret.length <= 1) return ret[0];
+  return ret;
+}
+
+function joinText(input) {
+  if (typeof input === 'string') return input;
+  return input.map(text => `[${text}]`).join('');
+}
 
 module.exports = function plugin(opts) {
   const parenthesis = opts && opts.parenthesis ? opts.parenthesis : '()';
@@ -10,8 +33,24 @@ module.exports = function plugin(opts) {
     const match = SYNTAX_PATTERN.exec(value);
     if (!match) return false;
     if (silent) return true;
-    const text = match[1];
-    const pronounciation = match[2];
+    const text = delimitText(match[1]);
+    const pronounciation = delimitText(match[2]);
+
+    let rubyBase;
+    if (typeof text === 'string') {
+      rubyBase = [{ type: 'text', value: text }];
+    } else {
+      rubyBase = text.map(base => ({
+        type: 'element',
+        children: [{ type: 'text', value: base }],
+        tagName: 'rb',
+      }));
+    }
+    const rubyText = [].concat(pronounciation).map(p => ({
+      type: 'element',
+      children: [{ type: 'text', value: p }],
+      tagName: 'rt',
+    }));
     return eat(match[0])({
       type: 'ruby',
       base: text,
@@ -19,10 +58,7 @@ module.exports = function plugin(opts) {
       data: {
         hName: 'ruby',
         hChildren: [
-          {
-            type: 'text',
-            value: text,
-          },
+          rubyBase,
           {
             type: 'element',
             children: [
@@ -30,13 +66,7 @@ module.exports = function plugin(opts) {
             ],
             tagName: 'rp',
           },
-          {
-            type: 'element',
-            children: [
-              { type: 'text', value: pronounciation },
-            ],
-            tagName: 'rt',
-          },
+          rubyText,
           {
             type: 'element',
             children: [
@@ -44,7 +74,7 @@ module.exports = function plugin(opts) {
             ],
             tagName: 'rp',
           },
-        ],
+        ].reduce((prev, curr) => prev.concat(curr), []),
       },
     });
   }
@@ -60,6 +90,10 @@ module.exports = function plugin(opts) {
     const { visitors } = this.Compiler.prototype;
     if (!visitors) return;
 
-    visitors.ruby = node => `{${node.base}}^(${node.text})`;
+    visitors.ruby = (node) => {
+      const base = joinText(node.base);
+      const text = joinText(node.text);
+      return `{${base}}^(${text})`;
+    };
   }
 };

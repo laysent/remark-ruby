@@ -56,6 +56,23 @@ This would compile to the following HTML:
 <p>This plugin works on <ruby>Markdown AST<rp>(</rp><rt>MDAST</rt><rp>)</rp></p>
 ```
 
+### Text Delimitation
+
+You could also use `[]` to delimit text:
+
+```markdown
+{[紳][士]}^([へん][たい])
+```
+
+This would compile to the following HTML:
+
+```html
+<p><ruby><rb>紳</rb><rb>士</rb><rp>(</rp><rt>へん</rt><rt>たい</rt><rp>)</rp></ruby></p>
+```
+
+Notice that this requires the usage of `rb` tag, which is not supported by most of the browsers
+except Firefox. Check [caniuse](https://caniuse.com/#search=ruby) for details.
+
 ## Installation
 
 [npm][npm]:
