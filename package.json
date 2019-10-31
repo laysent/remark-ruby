@@ -1,6 +1,6 @@
 {
   "name": "remark-ruby",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Custom syntax for remarkjs, adding ruby (furigana) to markdown.",
   "main": "index.js",
   "repository": {
@@ -20,21 +20,21 @@
   },
   "homepage": "https://github.com/laysent/remark-ruby#readme",
   "peerDependencies": {
-    "remark-parse": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0"
+    "remark-parse": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
   },
   "files": [
     "index.js"
   ],
   "devDependencies": {
-    "eslint": "5.3.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "jest": "^24.5.0",
-    "rehype-stringify": "^5.0.0",
-    "remark-parse": "^6.0.3",
-    "remark-rehype": "^4.0.0",
-    "remark-stringify": "^6.0.4",
-    "unified": "^7.1.0"
+    "eslint": "6.6.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "jest": "^24.9.0",
+    "rehype-stringify": "^6.0.0",
+    "remark-parse": "^7.0.1",
+    "remark-rehype": "^5.0.0",
+    "remark-stringify": "^7.0.3",
+    "unified": "^8.4.1"
   },
   "scripts": {
     "test": "jest",
