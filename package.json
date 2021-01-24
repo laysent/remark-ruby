@@ -41,7 +41,7 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint index.js index.test.js",
+    "lint": "eslint index.js index.test.js lib",
     "prepublish": "npm run lint && npm run test"
   }
 }
