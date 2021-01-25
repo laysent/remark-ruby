@@ -20,25 +20,28 @@
   },
   "homepage": "https://github.com/laysent/remark-ruby#readme",
   "peerDependencies": {
-    "remark-parse": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
+    "remark-parse": "^9.0.0"
   },
   "files": [
     "index.js"
   ],
+  "dependencies": {
+    "micromark": "^2.11.2"
+  },
   "devDependencies": {
-    "eslint": "6.6.0",
-    "eslint-config-airbnb-base": "14.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "jest": "^24.9.0",
-    "rehype-stringify": "^6.0.0",
-    "remark-parse": "^7.0.1",
-    "remark-rehype": "^5.0.0",
-    "remark-stringify": "^7.0.3",
-    "unified": "^8.4.1"
+    "eslint": "7.18.0",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-plugin-import": "2.22.1",
+    "jest": "^26.6.3",
+    "rehype-stringify": "^8.0.0",
+    "remark-parse": "^9.0.0",
+    "remark-rehype": "^8.0.0",
+    "remark-stringify": "^9.0.1",
+    "unified": "^9.2.0"
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint index.js index.test.js",
+    "lint": "eslint index.js index.test.js lib",
     "prepublish": "npm run lint && npm run test"
   }
 }
