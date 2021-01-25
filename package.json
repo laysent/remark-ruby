@@ -3,6 +3,7 @@
   "version": "0.2.1",
   "description": "Custom syntax for remarkjs, adding ruby (furigana) to markdown.",
   "main": "index.js",
+  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/laysent/remark-ruby.git"
